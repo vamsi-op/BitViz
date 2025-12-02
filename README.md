@@ -30,7 +30,7 @@ Master bit operations through visual learning and hands-on coding. BitViz makes 
 ## 🚀 Quick Start
 
 ### Try Online
-Visit: [Try it out](https://bitviz.vercel.app/)
+Visit: [BitViz](https://bitviz.vercel.app/)
 
 ### Run Locally
 ```bash
