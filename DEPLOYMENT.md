@@ -6,14 +6,14 @@
 
 Click this button:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vamsi-op/BitHub)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vamsi-op/BitViz)
 
 ### Method 2: Manual Deploy via Vercel Dashboard
 
 1. Go to [vercel.com](https://vercel.com)
 2. Sign in with GitHub
 3. Click "Add New" → "Project"
-4. Import `vamsi-op/BitHub` repository
+4. Import `vamsi-op/BitViz` repository
 5. Click "Deploy"
 6. Done! Your site will be live at `your-project.vercel.app`
 
@@ -118,6 +118,6 @@ git push origin main
 
 ---
 
-**Your BitHub deployment is ready! 🎉**
+**Your BitViz deployment is ready! 🎉**
 
 Share your link: `https://your-project.vercel.app`
