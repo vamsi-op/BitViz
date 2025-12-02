@@ -114,14 +114,6 @@ print(f"Result: {result}")
 - Swap Without Temp
 - Toggle Specific Bit
 
-## 🎓 Learning Path
-
-1. **Start with Visualizer** - Understand basic operations visually
-2. **Try Bit Tricks** - Learn common patterns
-3. **Code in Python** - Apply knowledge with real code
-4. **Solve Problems** - Practice with LeetCode-style challenges
-5. **Build Projects** - Use bit manipulation in your own code
-
 ## 🤝 Contributing
 
 Contributions make the open-source community amazing! Any contributions are **greatly appreciated**.
