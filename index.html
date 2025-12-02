@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitHub - Interactive Bit Manipulation Visualizer</title>
+    <meta name="description" content="Learn bit operations interactively with visual feedback. Master DSA concepts with BitHub's Python playground and real-time visualization.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔢 BitHub</h1>
+            <p class="subtitle">Master bit operations interactively with visual feedback & Python playground</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="playground.html" style="display: inline-block; padding: 12px 24px; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s ease;">🐍 Try Python Playground →</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-group">
+                    <label for="number1">A :</label>
+                    <input type="number" id="number1" value="0" min="-2147483648" max="2147483647">
+                    <div class="binary-display" id="binary1" data-number="1"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="number2">B :</label>
+                    <input type="number" id="number2" value="0" min="-2147483648" max="2147483647">
+                    <div class="binary-display" id="binary2" data-number="2"></div>
+                </div>
+
+                <!-- Operation Mode Selector -->
+                <div class="mode-selector">
+                    <label>Operation Mode:</label>
+                    <div class="mode-buttons">
+                        <button class="mode-btn active" data-mode="and">AND (&)</button>
+                        <button class="mode-btn" data-mode="or">OR (|)</button>
+                        <button class="mode-btn" data-mode="xor">XOR (^)</button>
+                        <button class="mode-btn" data-mode="not">NOT (~)</button>
+                        <button class="mode-btn" data-mode="left-shift">LEFT SHIFT (<<)</button>
+                        <button class="mode-btn" data-mode="right-shift">RIGHT SHIFT (>>)</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Single Operation Display -->
+            <section class="operations-section">
+                <h2>🎯 <span id="current-operation-title">AND Operation</span></h2>
+                <div class="single-operation">>
+                    <!-- Dynamic Operation Card -->
+                    <div class="operation-card" id="operation-display">
+                        <div class="operation-visual">
+                            <div class="operand" id="operand-a-container">
+                                <span class="label">A:</span>
+                                <span class="bits" id="operation-a"></span>
+                            </div>
+                            <div class="operand" id="operand-b-container">
+                                <span class="label">B:</span>
+                                <span class="bits" id="operation-b"></span>
+                            </div>
+                            <div class="result">
+                                <span class="label">Result:</span>
+                                <span class="bits" id="operation-result"></span>
+                            </div>
+                            <div id="shift-control-container" style="display: none;">
+                                <div class="shift-control">
+                                    <label>Shift by:</label>
+                                    <input type="number" id="shift-amount" value="2" min="0" max="31">
+                                    <span>positions</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="operation-info">
+                            <p class="decimal-result">Decimal: <strong id="operation-decimal">0</strong></p>
+                            <p class="explanation" id="operation-explanation">Returns 1 only if BOTH bits are 1</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+            <!-- Common Bit Tricks -->
+            <section class="tricks-section">
+                <h2>💡 Common Bit Manipulation Tricks</h2>
+                <div class="tricks-grid">
+                    <div class="trick-card">
+                        <h4>Check if Power of 2</h4>
+                        <code>n & (n-1) == 0</code>
+                        <button class="trick-btn" data-trick="powerof2">Try it</button>
+                        <p class="trick-result" id="powerof2-result"></p>
+                    </div>
+
+                    <div class="trick-card">
+                        <h4>Count Set Bits</h4>
+                        <code>Brian Kernighan's Algorithm</code>
+                        <button class="trick-btn" data-trick="countbits">Try it</button>
+                        <p class="trick-result" id="countbits-result"></p>
+                    </div>
+
+                    <div class="trick-card">
+                        <h4>Toggle nth Bit</h4>
+                        <code>n ^ (1 &lt;&lt; pos)</code>
+                        <div class="trick-input">
+                            <label>Position:</label>
+                            <input type="number" id="toggle-pos" value="3" min="0" max="31">
+                        </div>
+                        <button class="trick-btn" data-trick="toggle">Try it</button>
+                        <p class="trick-result" id="toggle-result"></p>
+                    </div>
+
+                    <div class="trick-card">
+                        <h4>Set nth Bit</h4>
+                        <code>n | (1 &lt;&lt; pos)</code>
+                        <div class="trick-input">
+                            <label>Position:</label>
+                            <input type="number" id="set-pos" value="5" min="0" max="31">
+                        </div>
+                        <button class="trick-btn" data-trick="set">Try it</button>
+                        <p class="trick-result" id="set-result"></p>
+                    </div>
+
+                    <div class="trick-card">
+                        <h4>Clear nth Bit</h4>
+                        <code>n & ~(1 &lt;&lt; pos)</code>
+                        <div class="trick-input">
+                            <label>Position:</label>
+                            <input type="number" id="clear-pos" value="3" min="0" max="31">
+                        </div>
+                        <button class="trick-btn" data-trick="clear">Try it</button>
+                        <p class="trick-result" id="clear-result"></p>
+                    </div>
+
+                    <div class="trick-card">
+                        <h4>Check nth Bit</h4>
+                        <code>(n & (1 &lt;&lt; pos)) != 0</code>
+                        <div class="trick-input">
+                            <label>Position:</label>
+                            <input type="number" id="check-pos" value="2" min="0" max="31">
+                        </div>
+                        <button class="trick-btn" data-trick="check">Try it</button>
+                        <p class="trick-result" id="check-result"></p>
+                    </div>
+
+                    <div class="trick-card">
+                        <h4>Swap Two Numbers</h4>
+                        <code>a ^= b; b ^= a; a ^= b;</code>
+                        <button class="trick-btn" data-trick="swap">Try it</button>
+                        <p class="trick-result" id="swap-result"></p>
+                    </div>
+
+                    <div class="trick-card">
+                        <h4>Find Missing Number</h4>
+                        <code>XOR all numbers</code>
+                        <button class="trick-btn" data-trick="missing">Try it</button>
+                        <p class="trick-result" id="missing-result"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Practice Problems -->
+            <section class="practice-section">
+                <h2>🎓 Practice Problems</h2>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <h4>Problem 1: Single Number</h4>
+                        <p>Given array where every element appears twice except one, find the single element.</p>
+                        <code>Input: [4,1,2,1,2] → Output: 4</code>
+                        <button class="solve-btn" data-problem="single">Show Solution</button>
+                        <div class="solution" id="single-solution" style="display:none;">
+                            <p><strong>Solution:</strong> XOR all numbers. Duplicate numbers cancel out!</p>
+                            <code>result = nums[0] ^ nums[1] ^ nums[2] ^ ...</code>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <h4>Problem 2: Number of 1 Bits</h4>
+                        <p>Count the number of '1' bits in a number (Hamming weight).</p>
+                        <code>Input: 11 (1011) → Output: 3</code>
+                        <button class="solve-btn" data-problem="hamming">Show Solution</button>
+                        <div class="solution" id="hamming-solution" style="display:none;">
+                            <p><strong>Solution:</strong> n & (n-1) removes rightmost 1</p>
+                            <code>while(n) { count++; n = n & (n-1); }</code>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <h4>Problem 3: Power of Two</h4>
+                        <p>Check if a number is a power of 2.</p>
+                        <code>Input: 16 → Output: true</code>
+                        <button class="solve-btn" data-problem="power2">Show Solution</button>
+                        <div class="solution" id="power2-solution" style="display:none;">
+                            <p><strong>Solution:</strong> Power of 2 has only one set bit</p>
+                            <code>return n > 0 && (n & (n-1)) == 0</code>
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <h4>Problem 4: Reverse Bits</h4>
+                        <p>Reverse the bits of a 32-bit unsigned integer.</p>
+                        <code>Input: 00000010100101000001111010011100</code>
+                        <button class="solve-btn" data-problem="reverse">Show Solution</button>
+                        <div class="solution" id="reverse-solution" style="display:none;">
+                            <p><strong>Solution:</strong> Extract each bit and build result from right</p>
+                            <code>result = (result << 1) | (n & 1); n >>= 1;</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ for DSA learners | Interactive Bit Manipulation Learning Tool</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
